@@ -1,5 +1,5 @@
-import Users from "../models/Users.js";
 import express from "express";
+import Users from "../models/users.js";
 
 const Router = express.Router()
 
@@ -21,7 +21,6 @@ Router.get('/:id', async (req,res) => {
     res.status(401).json(e)
   }
 })
-
 
 Router.post('/', async (req, res) => {
   try {
