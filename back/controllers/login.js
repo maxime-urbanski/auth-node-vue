@@ -28,6 +28,8 @@ Router.post('/', async (req,res) => {
       'expiresIn': '24h'
       })
 
+      delete login._doc.password
+
       res.status(200).json({token, login})
     }
   } catch (e) {
