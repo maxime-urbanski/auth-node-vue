@@ -5,10 +5,22 @@ $brown: #EE964B;
 $tomato: #F95738;
 
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: linear-gradient(0.25turn, $brown,$tomato );
+  min-height: 100vh;
+  background: linear-gradient(0.25turn, $brown,$tomato);
 }
+
+h3 {
+  font-size: 22px;
+}
+
+@import "form-container";
