@@ -104,3 +104,22 @@
     }
   }
 }
+.form-submit {
+  width: 100%;
+  padding: 20px;
+  .button-connexion {
+    position: relative;
+    border-radius: 8px;
+    background-color: $blue;
+    color: $lemon;
+    padding: 15px 0;
+    width: 100%;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: .3s ease-in;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<template>
+    <template>
   <FormContainer>
     <template #title>login</template>
     <template #form>
@@ -10,12 +10,16 @@
         <a href="#">Pas encore inscrit ?</a>
       </div>
     </template>
+  <template #action>
+    <ButtonConnexion />
+  </template>
   </FormContainer>
 </template>
 
 <script setup lang="ts">
 import FormContainer from "@/components/FormContainer.vue";
 import LoginForm from "@/components/LoginForm.vue";
+import ButtonConnexion from "@/components/ButtonConnexion.vue";
 </script>
 
 <style scoped>

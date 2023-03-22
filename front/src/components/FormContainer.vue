@@ -11,16 +11,16 @@
         <form action="" method="post">
           <slot name="form"></slot>
           <slot name="links"></slot>
-          <div class="form-submit">
-            <button type="submit"
-                    class="">
-              Envoyer
-            </button>
-          </div>
+          <slot name="action"></slot>
         </form>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ButtonConnexion from "@/components/ButtonConnexion.vue";
+import {useUserStore} from "@/stores/user";
+
+const userStore = useUserStore()
+</script>

@@ -7,7 +7,7 @@ interface UserInfo {
     isAdmin: boolean
 }
 
-export const userStore = defineStore('user.store', {
+export const useUserStore = defineStore('user', {
     state: (): UserInfo => {
         return {
             firstname: '',
