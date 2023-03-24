@@ -10,11 +10,11 @@ const JWT_SECRET = process.env.JWT_SECRET
 
 Router.post('/', async (req,res) => {
   const { email, password } = req.body
+
   try {
     const login = await Users.findOne({
       email
     }).exec()
-
     const goodPassword = await login.comparePassword(password)
 
     if (login && goodPassword) {
@@ -30,6 +30,7 @@ Router.post('/', async (req,res) => {
 
       delete login._doc.password
 
+      res.header('Access-Control-Allow-Origin', '*')
       res.status(200).json({token, login})
     }
   } catch (e) {

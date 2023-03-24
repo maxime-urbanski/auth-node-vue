@@ -2,6 +2,7 @@ import https from "https"
 import fs from 'fs'
 import mongoose from "mongoose";
 import * as dotenv from 'dotenv'
+import cors from 'cors'
 import express from 'express'
 import router from "./router/index.js";
 
@@ -11,10 +12,13 @@ const MONGODB_DB = process.env.DATABASE_NAME
 
 const app = express()
 const port = 5050
+const corsOption = {
+  origin: 'http://localhost:5173'
+}
 
+app.use(cors(corsOption))
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true, limit: '3mb'}))
-
 app.get('/', (req, res) => res.sendfile(`$(__dirname)/index.html`))
 
 app.use('/api', router)

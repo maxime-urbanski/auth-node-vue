@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["bcrypt", "npm:5.1.0"],\
+          ["cors", "npm:2.8.5"],\
           ["dotenv", "npm:16.0.3"],\
           ["express", "npm:4.18.2"],\
           ["jsonwebtoken", "npm:9.0.0"],\
@@ -269,6 +270,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["auth-back", "workspace:."],\
           ["bcrypt", "npm:5.1.0"],\
+          ["cors", "npm:2.8.5"],\
           ["dotenv", "npm:16.0.3"],\
           ["express", "npm:4.18.2"],\
           ["jsonwebtoken", "npm:9.0.0"],\
@@ -518,6 +520,17 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/cookie-signature-npm-1.0.6-93f325f7f0-9.zip/node_modules/cookie-signature/",\
         "packageDependencies": [\
           ["cookie-signature", "npm:1.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["cors", [\
+      ["npm:2.8.5", {\
+        "packageLocation": "../../../../.yarn/berry/cache/cors-npm-2.8.5-c9935a2d12-9.zip/node_modules/cors/",\
+        "packageDependencies": [\
+          ["cors", "npm:2.8.5"],\
+          ["object-assign", "npm:4.1.1"],\
+          ["vary", "npm:1.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\

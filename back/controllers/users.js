@@ -6,6 +6,7 @@ const Router = express.Router()
 Router.get('/',async (req, res) => {
   try {
     const getUsers = await Users.find()
+    res.header('Access-Control-Allow-Origin', '*')
     res.status(200).json(getUsers)
   } catch (e) {
     res.status(401).json(e)
