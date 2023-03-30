@@ -23,25 +23,32 @@ import ButtonConnexion from "@/components/ButtonConnexion.vue";
 import {reactive} from "vue";
 import axios from "axios";
 
+import {useAuthStore} from "@/stores/auth";
+
 const loginModel = reactive({
   email: '',
   password: ''
 })
 
 const axiosInstance = axios.create({
-  baseURL: 'https://localhost:5050/api',
-  headers: {
-    "Access-Control-Allow-Origin": '*'
-  }
+  baseURL: 'https://localhost:5050/api'
 })
 
+const store = useAuthStore()
+
 const login = async () => {
-  const {email, password} = loginModel
-  console.log(loginModel)
   try {
-    console.log('je passe la ');
-    const log = await axiosInstance.get('/users',)
-    console.log('login', await log)
+    const log = await axiosInstance.post('/login', {
+      email: loginModel.email,
+      password: loginModel.password
+    })
+
+    if (!log.data.token) {
+      return
+    } else {
+      store.token = log.data.token
+      store.connected = true
+    }
   } catch (e) {
     console.error(e)
   }
