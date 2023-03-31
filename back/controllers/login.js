@@ -30,7 +30,6 @@ Router.post('/', async (req,res) => {
 
       delete login._doc.password
 
-      res.header('Access-Control-Allow-Origin', '*')
       res.status(200).json({token, login})
     }
   } catch (e) {

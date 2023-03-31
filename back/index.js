@@ -4,24 +4,26 @@ import mongoose from "mongoose";
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import express from 'express'
-import router from "./router/index.js";
+import Router from "./router/index.js";
 
 dotenv.config()
 const MONGODB_URL = process.env.DATABASE_URL
 const MONGODB_DB = process.env.DATABASE_NAME
 
 const app = express()
-const port = 5050
+const portHttps = 5050
+const portHttp = 3333
 const corsOption = {
   origin: 'http://localhost:5173'
 }
 
-app.use(cors(corsOption))
+app.use(express.json())
+app.use(cors())
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true, limit: '3mb'}))
 app.get('/', (req, res) => res.sendfile(`$(__dirname)/index.html`))
 
-app.use('/api', router)
+app.use('/api', Router)
 
 const options = {
   key: fs.readFileSync('key.pem'),
@@ -31,7 +33,7 @@ const options = {
 try {
   await mongoose.connect(`mongodb://${MONGODB_URL}/${MONGODB_DB}`)
   console.log('Connexion database ok')
-  https.createServer(options, app).listen(port, console.log(`Server sur le port ${port}`));
+  https.createServer(options, app).listen(portHttps, console.log(`Server sur le port ${portHttps}`));
 } catch (e) {
   console.log('error mongoose', e)
 }
