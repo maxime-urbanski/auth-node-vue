@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('auth', {
         }
     },
     actions: {
-        async auth(model: AuthAction) {
+        async auth(model: AuthAction): Promise<void> {
             try {
                 const log = await axiosInstance.post('/login', {
                     email: model.email,

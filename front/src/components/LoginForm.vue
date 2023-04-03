@@ -23,17 +23,11 @@
 
 <script setup lang="ts">
 
-const props = defineProps({
+defineProps({
   email: String,
   password: String
 })
 
-console.log(props.email)
-
 defineEmits(['update:email', 'update:password'])
 
 </script>
-
-<style scoped>
-
-</style>
