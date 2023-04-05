@@ -1,9 +1,10 @@
 import express from "express";
 import Users from "../models/users.js";
+import auth from "../middlewares/auth.js";
 
 const Router = express.Router()
 
-Router.get('/',async (req, res) => {
+Router.get('/', async (req, res) => {
   try {
     const getUsers = await Users.find()
     res.header('Access-Control-Allow-Origin', '*')
@@ -13,11 +14,11 @@ Router.get('/',async (req, res) => {
   }
 })
 
-Router.get('/:id', async (req,res) => {
+Router.get('/:id', async (req, res) => {
   const {id} = req.params
   try {
     const getUser = await Users.findById(id)
-    res.status(400).json(getUser)
+    if (id === getUser['_id'].toString()) res.status(200).json(getUser)
   } catch (e) {
     res.status(401).json(e)
   }

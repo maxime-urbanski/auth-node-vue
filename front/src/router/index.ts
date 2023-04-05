@@ -4,37 +4,36 @@ import LoginView from "@/views/LoginView.vue";
 import {useAuthStore} from "@/stores/auth";
 import SignupView from "@/views/SignupView.vue";
 
-
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: HomeView,
-            meta: {
-                requiresAuth: true
-            },
-            beforeEnter: (to, from) => {
-                const authStore = useAuthStore()
-                if (to.meta.requiresAuth && !authStore.$state.connected) {
-                    return {
-                        path: '/login'
-                    }
-                }
-            }
-        },
-        {
-            path: '/login',
-            name: 'login',
-            component: LoginView
-        },
-        {
-            path: '/signup',
-            name: 'signup',
-            component: SignupView
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+      meta: {
+        requiresAuth: true
+      },
+      beforeEnter: (to, from) => {
+        const authStore = useAuthStore()
+        if (to.meta.requiresAuth && !authStore.$state.connected) {
+          return {
+            path: '/login'
+          }
         }
-    ]
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginView
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignupView
+    }
+  ]
 })
 
 export default router

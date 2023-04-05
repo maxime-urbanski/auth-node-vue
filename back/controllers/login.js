@@ -18,10 +18,10 @@ Router.post('/', async (req,res) => {
     const goodPassword = await login.comparePassword(password)
 
     if (login && goodPassword) {
-      const { firstname, lastname, email, isAdmin } = login
+      const { _id, email, userType } = login
 
       const payload = {
-        firstname, lastname, email, isAdmin
+        _id, email, userType
       }
 
       const token = jwt.sign(payload, JWT_SECRET, {

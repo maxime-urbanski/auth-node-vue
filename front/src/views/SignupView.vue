@@ -1,5 +1,5 @@
 <template>
-  <FormContainer>
+  <ContainerGlobal need-action="true">
     <template #title>Créer un compte</template>
     <template #form>
       <SignUpForm
@@ -17,15 +17,15 @@
     <template #action>
       <ButtonConnexion @action="store.signup(signupModel)" />
     </template>
-  </FormContainer>
+  </ContainerGlobal>
 </template>
 
 <script setup lang="ts">
-import FormContainer from "@/components/FormContainer.vue";
-import ButtonConnexion from "@/components/ButtonConnexion.vue";
-import SignUpForm from "@/components/SignUpForm.vue";
 import {reactive} from "vue";
 import {useSignUpStore} from "@/stores/signup";
+import ButtonConnexion from "@/components/ButtonConnexion.vue";
+import SignUpForm from "@/components/SignUpForm.vue";
+import ContainerGlobal from "@/components/ContainerGlobal.vue";
 
 const signupModel = reactive({
   firstname: '',

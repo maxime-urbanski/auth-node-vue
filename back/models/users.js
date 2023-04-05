@@ -25,6 +25,11 @@ const usersSchema = new Schema({
     type: Boolean,
     required: false,
     default: false
+  },
+  userType: {
+    type: String,
+    required: false,
+    default: 'USER'
   }
 })
 

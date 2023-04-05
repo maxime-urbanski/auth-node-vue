@@ -3,7 +3,8 @@ import {axiosInstance} from '@/utils'
 
 interface Auth {
     connected: Boolean,
-    token: string
+    token: String,
+    id: String
 }
 
 interface AuthAction {
@@ -16,7 +17,8 @@ export const useAuthStore = defineStore('auth', {
     state: (): Auth => {
         return {
             connected: false,
-            token: ''
+            token: '',
+            id: ''
         }
     },
     actions: {
@@ -27,11 +29,12 @@ export const useAuthStore = defineStore('auth', {
                     password: model.password
                 })
 
-                if (!log.data.token) {
-                    return
-                } else {
+                if (!log.data.token) return
+
+                if (log) {
                     this.$state.token = log.data.token
                     this.$state.connected = true
+                    this.$state.id = log.data.login['_id']
                     this.$router.push({name: 'home'})
                 }
             } catch (e) {

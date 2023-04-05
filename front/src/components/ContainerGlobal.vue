@@ -1,5 +1,5 @@
 <template>
-  <div class="form-container">
+  <div class="container">
     <div class="column-left"></div>
     <div class="column-right">
       <div class="header">
@@ -7,20 +7,22 @@
           <slot name="title"></slot>
         </h3>
       </div>
-      <div class="form-content">
+      <div class="form-content" v-if="needAction">
         <form action="" method="post">
           <slot name="form"></slot>
           <slot name="links"></slot>
           <slot name="action"></slot>
         </form>
       </div>
+        <div class="info-content" v-if="!needAction">
+            
+        </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import ButtonConnexion from "@/components/ButtonConnexion.vue";
-import {useUserStore} from "@/stores/user";
-
-const userStore = useUserStore()
+defineProps({
+    needAction: Boolean
+})
 </script>
